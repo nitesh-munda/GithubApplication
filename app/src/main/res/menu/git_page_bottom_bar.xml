@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/first_tab"
+        android:icon="@drawable/pull_request"
+        android:title="@string/pulls"/>
+
+    <item
+        android:id="@+id/second_tab"
+        android:icon="@drawable/branches"
+        android:title="@string/branches"/>
+</menu>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GithubApp</string>
+    <string name="cta_continue">Continue</string>
+    <string name="pulls">Pulls</string>
+    <string name="branches">Branches</string>
+    <string name="repository_name">*Repository name</string>
+    <string name="username">*Username</string>
+</resources>
