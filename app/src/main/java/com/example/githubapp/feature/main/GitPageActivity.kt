@@ -45,6 +45,10 @@ class GitPageActivity: AppCompatActivity(),
         selectFirstByDefault()
     }
 
+    override fun onBackPressed() {
+        //no-op
+    }
+
     private fun selectFirstByDefault() {
         binding.bottomNavBar.selectedItemId = R.id.first_tab
     }
@@ -53,6 +57,9 @@ class GitPageActivity: AppCompatActivity(),
         val userName = intent.extras?.getString(USER_NAME_KEY)
         binding.tvUser.text = "Hi, $userName"
         (binding.bottomNavBar as NavigationBarView).setOnItemSelectedListener(this@GitPageActivity)
+        binding.ivClose.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
