@@ -15,11 +15,11 @@ class BranchesRVAdapter<T>(private val adapterCallback: AdapterCallback) : Recyc
     fun refreshList(data: List<T>) {
         dataList.clear()
         dataList.addAll(data)
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, dataList.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BranchesViewHolder {
-        val binding = BranchesListItemBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = BranchesListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BranchesViewHolder(binding)
     }
 
