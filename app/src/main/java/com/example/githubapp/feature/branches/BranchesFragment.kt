@@ -66,10 +66,10 @@ class BranchesFragment: Fragment(), AdapterCallback {
         viewModel = viewModelProvider.create(GithubBranchesViewModel::class.java)
         viewModel.exposeAllGitBranches.observe(viewLifecycleOwner, Observer {
             if (it==null){
-                Toast.makeText(requireContext(), "Something went wrong!", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Something went wrong!", Toast.LENGTH_SHORT).show()
             } else {
                 if (it.isNullOrEmpty()) {
-                    Toast.makeText(requireContext(), "Empty result", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Empty result", Toast.LENGTH_SHORT).show()
                 }
                 rvAdapter.refreshList(it)
             }
