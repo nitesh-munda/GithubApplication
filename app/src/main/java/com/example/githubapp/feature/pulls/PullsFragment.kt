@@ -66,6 +66,9 @@ class PullsFragment : Fragment(), AdapterCallback {
             if (it==null){
                 Toast.makeText(requireContext(), "Something went wrong!", Toast.LENGTH_LONG).show()
             } else {
+                if(it.isNullOrEmpty()) {
+                    Toast.makeText(requireContext(), "Empty result", Toast.LENGTH_LONG).show()
+                }
                 pullsRVAdapter.refreshList(it)
             }
         })

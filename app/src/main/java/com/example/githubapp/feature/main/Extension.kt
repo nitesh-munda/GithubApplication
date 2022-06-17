@@ -7,10 +7,10 @@ fun AppCompatActivity.findFragmentByTag(tag: String) : Fragment? {
     return supportFragmentManager.findFragmentByTag(tag)
 }
 
-fun AppCompatActivity.commitFragmentNow(tag: String, fragment: Fragment, container: Int) {
+fun AppCompatActivity.commitFragmentNow(fragment: Fragment, container: Int) {
     supportFragmentManager
         .beginTransaction()
-        .add(container, fragment, tag)
+        .replace(container, fragment)
         .commitNow()
 }
 

@@ -7,6 +7,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.githubapp.R
 import com.example.githubapp.databinding.ActivityGitPageBinding
+import com.example.githubapp.feature.branches.BranchScreenData
+import com.example.githubapp.feature.branches.BranchesFragment
 import com.example.githubapp.feature.pulls.PullsFragment
 import com.example.githubapp.feature.pulls.model.PullsScreenData
 import com.google.android.material.navigation.NavigationBarView
@@ -14,9 +16,10 @@ import com.google.android.material.navigation.NavigationBarView
 class GitPageActivity: AppCompatActivity(),
     NavigationBarView.OnItemSelectedListener {
 
+    private var repoName: String? = ""
+    private var userName: String? = ""
+
     companion object {
-        const val FIRST_TAB_TAG = "first"
-        const val SECOND_TAB_TAG = "second"
         private const val REPO_NAME_KEY = "REPO_NAME"
         private const val USER_NAME_KEY = "USER_NAME"
 
@@ -36,6 +39,8 @@ class GitPageActivity: AppCompatActivity(),
         binding = ActivityGitPageBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
+        repoName = intent.extras?.getString(REPO_NAME_KEY)
+        userName = intent.extras?.getString(USER_NAME_KEY)
         setupViews()
         selectFirstByDefault()
     }
@@ -53,26 +58,27 @@ class GitPageActivity: AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.first_tab -> {
-                if (findFragmentByTag(FIRST_TAB_TAG) == null) {
-                    val repoName = intent.extras?.getString(REPO_NAME_KEY)
-                    val userName = intent.extras?.getString(USER_NAME_KEY)
-                    val fragment = PullsFragment.newInstance(PullsScreenData(repoName?:"",userName?:""))
-                    commitFragmentNow(FIRST_TAB_TAG, fragment, binding.fragmentContainer.id)
-                    showCurrentFragment(fragment)
-                    true
-                } else {
-                    val fragment = findFragmentByTag(FIRST_TAB_TAG)
-                    showCurrentFragment(fragment!!)
-                    true
-                }
+                val fragment =
+                    PullsFragment.newInstance(
+                        PullsScreenData(
+                            repoName = repoName ?: "",
+                            userName = userName ?: ""
+                        )
+                    )
+                commitFragmentNow(fragment, binding.fragmentContainer.id)
+                showCurrentFragment(fragment)
+                true
             }
 
             R.id.second_tab -> {
-                if (findFragmentByTag(SECOND_TAB_TAG) == null) {
-                    val fragment = TODO()
-                    commitFragmentNow(SECOND_TAB_TAG, fragment, binding.fragmentContainer.id)
-                    showCurrentFragment(fragment)
-                }
+                val fragment = BranchesFragment.newInstance(
+                    BranchScreenData(
+                        owner = userName ?: "",
+                        repository = repoName ?: ""
+                    )
+                )
+                commitFragmentNow(fragment, binding.fragmentContainer.id)
+                showCurrentFragment(fragment)
                 true
             }
             else -> {

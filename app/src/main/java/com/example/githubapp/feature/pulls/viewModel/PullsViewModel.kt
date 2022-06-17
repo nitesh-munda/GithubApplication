@@ -24,7 +24,11 @@ class PullsViewModel(
     private fun launchPage() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = githubRepository.getPullRequestFromServer(owner = owner, repo = repo)
-            pullRequests.postValue(result.getOrDefault(emptyList()))
+            if(result.isSuccess) {
+                pullRequests.postValue(result.getOrDefault(emptyList()))
+            } else {
+                pullRequests.postValue(emptyList())
+            }
         }
     }
 }

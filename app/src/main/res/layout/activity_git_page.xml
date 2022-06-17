@@ -38,10 +38,11 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
-        android:background="?android:attr/windowBackground"
-        android:foreground="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty"
+        android:soundEffectsEnabled="true"
+        app:itemIconTint="@color/selector"
+        app:itemTextColor="@color/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/git_page_bottom_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

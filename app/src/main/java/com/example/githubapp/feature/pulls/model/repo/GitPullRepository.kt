@@ -6,7 +6,6 @@ import com.example.githubapp.feature.pulls.model.network.models.PullRequestData
 class GitPullRepository(
     private val apiService: GithubPullApi
 ) {
-
     suspend fun getPullRequestFromServer(owner: String, repo: String) : Result<List<PullRequestData>> {
         val result = apiService.getPullRequests(
             owner = owner,
