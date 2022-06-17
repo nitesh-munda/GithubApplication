@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/sixteen"
+    android:layout_marginTop="@dimen/sixteen"
     android:elevation="10dp"
     android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="@dimen/sixteen">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:background="#E0F3FF"
+        android:layout_height="120dp"
         android:padding="@dimen/sixteen">
 
         <androidx.appcompat.widget.AppCompatTextView

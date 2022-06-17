@@ -4,4 +4,5 @@
     android:id="@+id/root_rv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/sixteen"
     tools:listitem="@layout/branches_list_item" />
